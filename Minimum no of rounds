@@ -1,0 +1,36 @@
+class Solution {
+public:
+    int minimumRounds(vector<int>& tasks) {
+      map<int,int>m;
+for(int i=0;i<tasks.size();i++)
+  m[tasks[i]]++;
+         int c=1;
+         vector<int>k;
+         
+              
+    int v=0;
+    int tott=0;
+    for(auto it =m.begin();it!=m.end();it++){
+int k=it->second;
+        if(k==1)
+        return -1;
+        if(k==2||k==3)
+        tott++;
+        else {
+            if(k%3==2){
+                v=v+k/3;
+                tott++;
+            }else if(k%3==0){
+                v=v+k/3;
+            }else if(k%3==1){
+                int y=k/3;
+                v=v+y-1;
+               tott=tott+2;
+            }
+        }
+    }
+    return tott+v;
+
+
+    }
+};
